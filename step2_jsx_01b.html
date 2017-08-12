@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>My First App</title>
+    <script crossorigin src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+   </head>
+
+   <body>
+
+    <main> </main>  
+
+      <script type="text/babel">
+
+         class StoryBox extends React.Component{
+            render(){
+               return( <div> Hello World with QuerySelector </div> );
+            }
+         }
+
+        var target= document.querySelector('main');
+
+        ReactDOM.render(<StoryBox />,target);
+
+      </script>
+
+  </body>
+</html>

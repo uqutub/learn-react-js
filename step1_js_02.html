@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>React JS</title>
+    <script crossorigin src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+</head>
+
+<body>
+
+    <main></main>
+
+    <script type="text/javascript">
+        var HelloWorld = React.createClass({
+
+            render: function () {
+                return React.createElement('div', {className: 'shopping-list'},
+                    React.createElement('h1', null, "Hello World!"),
+                    React.createElement('h2', null, "Heading 02")
+                );
+                // return React.createElement("h1", null, "Hello World!");
+            },
+
+        });
+        var mainElement = document.querySelector("main");
+
+        ReactDOM.render(React.createElement(HelloWorld), mainElement);
+    </script>
+</body>
+
+</html>
