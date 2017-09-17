@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View, TouchableHighlight } from 'react-native';
 
-import AppBase from './todo.base';
+import TodoBase from './todo.base';
 import AddTodoUI from '../ui-component/add-todo/add-todo.native';
 import ShowTodoUI from '../ui-component/view-todo/view-todo.native';
 
-export default class Todo extends AppBase {
+export default class Todo extends TodoBase {
 
     render() {
         return (

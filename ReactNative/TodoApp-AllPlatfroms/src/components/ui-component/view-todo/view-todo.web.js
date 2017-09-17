@@ -1,10 +1,8 @@
 import React from 'react';
+import ViewTodoBase from './view-todo.base';
 
-export default class AddTodo extends React.Component {
+export default class ViewTodo extends ViewTodoBase {
 
-    doneHandler = () => {
-        this.props.done(this.props.todo);
-    }
 
     render() {
         return (

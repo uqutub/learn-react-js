@@ -1,18 +1,7 @@
 import React from 'react';
+import AddTodoBase from './add-todo.base';
 
-export default class AddTodo extends React.Component {
-
-    state = { text: '' };
-
-    onChangeTextHandler = (e) => {
-        this.setState({ text:  e.target.value });
-    }
-
-    addButtonHandler = () => {
-        console.log(this.state.text);
-        this.props.add(this.state.text);
-        this.setState({ text: '' });
-    }
+export default class AddTodo extends AddTodoBase {
 
     render() {
         return (

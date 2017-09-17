@@ -1,11 +1,8 @@
 import React from 'react';
+import ViewTodoBase from './view-todo.base';
 import { Text, View, TouchableHighlight } from 'react-native';
 
-export default class AddTodo extends React.Component {
-
-    doneHandler = () => {
-        this.props.done(this.props.todo);
-    }
+export default class ViewTodo extends ViewTodoBase {
 
     render() {
         return (

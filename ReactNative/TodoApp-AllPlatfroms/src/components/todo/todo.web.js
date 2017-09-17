@@ -1,10 +1,10 @@
 import React from 'react';
 
-import AppBase from './todo.base';
+import TodoBase from './todo.base';
 import AddTodoUI from '../ui-component/add-todo/add-todo.web';
 import ShowTodoUI from '../ui-component/view-todo/view-todo.web';
 
-export default class Todo extends AppBase {
+export default class Todo extends TodoBase {
 
     render() {
         return (
