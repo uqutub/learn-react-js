@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class TodoBase extends Component {
     
-    state = { myTodoList: [] };
+    state = { myTodoList: [], fontLoaded: false };
     
     constructor() {
         super();

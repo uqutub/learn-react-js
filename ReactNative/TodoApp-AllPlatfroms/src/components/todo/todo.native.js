@@ -7,16 +7,27 @@ import ShowTodoUI from '../ui-component/view-todo/view-todo.native';
 
 export default class Todo extends TodoBase {
 
+    async componentWillMount() {
+        await Expo.Font.loadAsync({
+          'Roboto': require('native-base/Fonts/Roboto.ttf'),
+          'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+        });
+        this.setState({fontLoaded: true});
+      }
+      
+
     render() {
         return (
-            <View style={{ flex: 1, marginTop: 30 }}>
-                
-                <AddTodoUI add={this.addTodo} />
+            this.state.fontLoaded ?
+                (<View style={{ flex: 1, marginTop: 30 }}>
+                    
+                    <AddTodoUI add={this.addTodo} />
 
-                <Text>Length: {this.state.myTodoList.length}</Text>
+                    <Text>Length: {this.state.myTodoList.length}</Text>
 
-                { this.state.myTodoList.map((t, i) => <ShowTodoUI key={i} todo={t} done={this.doneTodo} />) }
-            </View>
+                    { this.state.myTodoList.map((t, i) => <ShowTodoUI key={i} todo={t} done={this.doneTodo} />) }
+                </View>)
+            : null
         );
     }
 }
