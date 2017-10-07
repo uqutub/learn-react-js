@@ -22,6 +22,11 @@
     "expo": "^20.0.0",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.47.0",
-    "react-router-native": "^4.2.0"
+    "react-redux": "^5.0.6",
+    "react-router-native": "^4.2.0",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
+    "redux-observable": "^0.16.0",
+    "rxjs": "^5.4.3"
   }
 }

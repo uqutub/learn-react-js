@@ -2,20 +2,24 @@ import React from 'react';
 import { View, Text, Button, TextInput } from 'react-native';
 import Nav from '../nav/nav';
 
-import { todoService } from '../../service/index';
+import { connect } from 'react-redux'
+import { TodoAction } from '../../store/action/todo';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
 
     todoText = '';
 
-    constructor() {
-        super();
-        this.state = { todoText: '', todos: todoService.getTodos() };
+    constructor(props) {
+        super(props);
     }
 
-    deleteTodo(todo) {
-        todoService.deleteTodo(todo);
-        this.getTodos();
+    componentWillMount() {
+        this.state = { todoText: '', todos: this.props.todos };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        // console.log('nextProps ---------', nextProps['todos'].length);
+        this.setTodos(nextProps['todos']);
     }
 
     onChangeHandler = (e) => {
@@ -23,15 +27,16 @@ export default class Home extends React.Component {
     }
 
     addTodo = () => {
-        // let x = this.state['todos'];
-        let o = { id: todoService.getLength(), text: this.state.todoText, status: false }
-        // x.push(o);
-        todoService.addTodo(o);
-        this.getTodos();
+        let o = { id: this.props.todos.length, text: this.state.todoText, status: false }
+        this.props.onAddClick(o);
     }
 
-    getTodos() {
-        this.setState({ todos: todoService.getTodos(), todoText: '' });
+    deleteTodo(todo) {
+        this.props.onDelClick(todo);
+    }
+
+    setTodos(arr) {
+        this.setState({ todos: arr, todoText: '' });
     }
 
     listRender() {
@@ -52,12 +57,15 @@ export default class Home extends React.Component {
             <View>
 
                 <Nav />
+
                 <Text> Home Component / Page </Text>
+
                 <TextInput
                     value={this.state.todoText}
                     onChangeText={this.onChangeHandler}
                     maxLength={40}
                 />
+
                 <Button title="Add" onPress={this.addTodo}> </Button>
 
                 {this.listRender()}
@@ -67,3 +75,19 @@ export default class Home extends React.Component {
     }
 
 }
+
+
+const mapStateToProps = state => {
+    return {
+        todos: state.todoReducer['todo']
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddClick: (p) => dispatch(TodoAction.addTodo(p)),
+        onDelClick: (x) => dispatch(TodoAction.delTodo(x))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
