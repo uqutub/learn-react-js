@@ -14,22 +14,26 @@ export default class Home extends React.Component {
     }
 
     componentWillMount() {
+        // let cb = (d) => {
+        //     console.log('d got data', d);
+        // } 
+        // todoService.myCallback(cb);
         todoService.myPromise()
-            .then(() => {
-                console.log('yahoooooooooooooooo its relsove');
-            });
+            .then((x) => {
+                console.log('yahoooooooooooooooo its relsove', x);
+            }).catch((x) => {
+                console.log('errrrrr its rej', x);
+                
+            }) ;
     }
 
-    componentDidMount() {
-
-        let abc = async () => {
-            var a = await todoService.myPromise();
-            console.log('aaaaaaaaaaa', a);
-        }
-
-        abc();
-
-    }
+    // componentDidMount() {
+    //     let abc = async () => {
+    //         var a = await todoService.myPromise();
+    //         console.log('aaaaaaaaaaa', a);
+    //     }
+    //     abc();
+    // }
 
     deleteTodo(todo) {
         todoService.deleteTodo(todo);
@@ -45,10 +49,10 @@ export default class Home extends React.Component {
         let o = { id: todoService.getLength(), text: this.state.todoText, status: false }
         // x.push(o);
         todoService.addTodo(o);
-        this.getTodos();
+        this.updateState();
     }
 
-    getTodos() {
+    updateState() {
         this.setState({ todos: todoService.getTodos(), todoText: '' });
     }
 

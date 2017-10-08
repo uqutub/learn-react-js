@@ -5,6 +5,8 @@ class TodoService {
         { id: 1, text: 'Todo2 .....', status: false }
     ];
 
+    arrLength = 0;
+
     constructor() {
         console.log('TodoService Runing..................');
     }
@@ -14,7 +16,15 @@ class TodoService {
     }
 
     addTodo(todo) {
-        return this._todoArr.push(todo);
+        this._todoArr.push(todo);
+        this.updateArrayLength();
+        //
+        //
+        //
+    }
+
+    updateArrayLength() {
+        this.arrLength = this._todoArr.length;
     }
 
     deleteTodo(todo) {
@@ -29,15 +39,25 @@ class TodoService {
         return this._todoArr.length;
     }
 
+    myCallback(cb) {
+        console.log('fireee calback')
+        setTimeout(() => {
+            // got data
+            cb('cccccccccdata');
+        }, 1500);
+    }
+
     myPromise() {
-        return new Promise ((reslove, reject) => {
+        return new Promise ( (res, rej) => {
             setTimeout(() => {
                 console.log('now resloving...');
-                reslove();
+                rej('failure');
             }, 2500);
-        });
+        } );
     }
 
 }
+
+// static ( fucntions / variables )
 
 export let todoService = new TodoService();
