@@ -13,6 +13,24 @@ export default class Home extends React.Component {
         this.state = { todoText: '', todos: todoService.getTodos() };
     }
 
+    componentWillMount() {
+        todoService.myPromise()
+            .then(() => {
+                console.log('yahoooooooooooooooo its relsove');
+            });
+    }
+
+    componentDidMount() {
+
+        let abc = async () => {
+            var a = await todoService.myPromise();
+            console.log('aaaaaaaaaaa', a);
+        }
+
+        abc();
+
+    }
+
     deleteTodo(todo) {
         todoService.deleteTodo(todo);
         this.getTodos();

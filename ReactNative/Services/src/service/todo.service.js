@@ -1,5 +1,5 @@
 class TodoService {
-    
+
     _todoArr = [
         { id: 0, text: 'Todo Getting from todoService ---', status: false },
         { id: 1, text: 'Todo2 .....', status: false }
@@ -27,6 +27,15 @@ class TodoService {
 
     getLength() {
         return this._todoArr.length;
+    }
+
+    myPromise() {
+        return new Promise ((reslove, reject) => {
+            setTimeout(() => {
+                console.log('now resloving...');
+                reslove();
+            }, 2500);
+        });
     }
 
 }
