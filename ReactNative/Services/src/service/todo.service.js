@@ -1,11 +1,15 @@
+import { Subject } from 'rxjs';
+
 class TodoService {
+    
     
     _todoArr = [
         { id: 0, text: 'Todo Getting from todoService 123', status: false },
         { id: 1, text: 'Todo2 .....', status: false }
     ];
-
+    
     constructor() {
+        this.mySubjectObservable = new Subject();
         console.log('TodoService Runing..................');
     }
 
@@ -28,6 +32,11 @@ class TodoService {
     getLength() {
         return this._todoArr.length;
     }
+
+    fireMyValue(v) {
+        this.mySubjectObservable.next(v);
+    }
+    
 
 }
 

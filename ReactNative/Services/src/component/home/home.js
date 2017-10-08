@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Button, TextInput } from 'react-native';
 import Nav from '../nav/nav';
 
+import {todoService} from '../../service/index';
 import { connect } from 'react-redux'
 import { TodoAction } from '../../store/action/todo';
 
@@ -11,10 +12,16 @@ class Home extends React.Component {
 
     constructor(props) {
         super(props);
+        setTimeout(() => {
+            todoService.fireMyValue('hehehehehehe');
+        }, 2000)
     }
 
     componentWillMount() {
         this.state = { todoText: '', todos: this.props.todos };
+        todoService.mySubjectObservable.subscribe(x => {
+            console.log('fireeeeeeeeeed my observable', x);
+        });
     }
 
     componentWillReceiveProps(nextProps) {
