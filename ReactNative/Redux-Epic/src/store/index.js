@@ -7,10 +7,23 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { counterReducer } from './reducer/counter';
 import { todoReducer } from './reducer/todo';
 
+// actions
+import { GitEpic } from './epic/github';
+
 // Application Reducers
 const rootReducer = combineReducers({
     counterReducer: counterReducer,
     todoReducer: todoReducer
 });
 
-export let store = createStore(rootReducer);
+export const rootEpic = combineEpics(
+    GitEpic.getRepoData,
+    GitEpic.getFollowersData
+    // more epics functions go here
+)
+
+const epicMiddleware = createEpicMiddleware(rootEpic);
+
+const createStoreWithMiddleware = applyMiddleware(epicMiddleware);
+
+export let store = createStore(rootReducer, createStoreWithMiddleware);
