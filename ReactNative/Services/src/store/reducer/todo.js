@@ -5,7 +5,7 @@ const INITIAL_STATE = {
         { id: 0, text: 'Todo Getting from Store ---', status: false },
         { id: 1, text: 'Todo2 .....', status: false }
     ]
-};
+ };
 
 export function todoReducer(state = INITIAL_STATE, action) {
     let newState = null;

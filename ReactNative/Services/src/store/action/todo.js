@@ -21,8 +21,8 @@ export class TodoAction {
     }
 
 
-    // static addTodo = createAction(
-    //     CounterAction.NULL,
+    // static addTodo2 = createAction(
+    //     TodoAction.ADD_TODO,
     //     payload => payload
     // );
 
