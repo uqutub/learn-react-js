@@ -11,7 +11,7 @@ export class GitEpic {
                     .pluck("response")
                     .switchMap((jsonData) => {
                         console.log("jsondata ==> repos ", jsonData)
-                        return Observable.of(UserAction.getRepoSuccessful(jsonData));
+                        return Observable.of(GitAction.getRepoSuccessful(jsonData));
                     });
             });
     }
@@ -25,7 +25,7 @@ export class GitEpic {
                     .pluck("response")
                     .switchMap((jsonData) => {
                         console.log("jsondata ==> followers ", jsonData)
-                        return Observable.of(UserAction.getFollowersSuccessful(jsonData));
+                        return Observable.of(GitAction.getFollowersSuccessful(jsonData));
                     });
             });
     }
