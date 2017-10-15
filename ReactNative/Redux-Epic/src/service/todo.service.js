@@ -2,7 +2,6 @@ import { Subject } from 'rxjs';
 
 class TodoService {
     
-    
     _todoArr = [
         { id: 0, text: 'Todo Getting from todoService 123', status: false },
         { id: 1, text: 'Todo2 .....', status: false }

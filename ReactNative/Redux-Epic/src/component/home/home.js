@@ -5,6 +5,7 @@ import Nav from '../nav/nav';
 import {todoService} from '../../service/index';
 import { connect } from 'react-redux'
 import { TodoAction } from '../../store/action/todo';
+import { GitAction } from '../../store/action/github';
 
 class Home extends React.Component {
 
@@ -12,9 +13,6 @@ class Home extends React.Component {
 
     constructor(props) {
         super(props);
-        setTimeout(() => {
-            todoService.fireMyValue('hehehehehehe');
-        }, 2000)
     }
 
     componentWillMount() {
@@ -36,6 +34,7 @@ class Home extends React.Component {
     addTodo = () => {
         let o = { id: this.props.todos.length, text: this.state.todoText, status: false }
         this.props.onAddClick(o);
+        todoService.fireMyValue(o);
     }
 
     deleteTodo(todo) {
@@ -93,7 +92,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAddClick: (p) => dispatch(TodoAction.addTodo(p)),
-        onDelClick: (x) => dispatch(TodoAction.delTodo(x))
+        onDelClick: (x) => dispatch(TodoAction.delTodo(x)),
+        getMyRepo: (x) => dispatch(GitAction.getRepos(x))
     }
 }
 

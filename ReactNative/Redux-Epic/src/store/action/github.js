@@ -22,7 +22,7 @@ export class GitAction {
     }
 
     static getRepoSuccessful(data) {
-        console.log('repo success', data);
+        // console.log('repo success', data);
         return {
             type: GitAction.GET_REPOS_SUCCESS,
             payload: data

@@ -10,7 +10,7 @@ export class GitEpic {
                 return Observable.ajax(`https://api.github.com/users/${action$.payload}/repos`)
                     .pluck("response")
                     .switchMap((jsonData) => {
-                        console.log("jsondata ==> repos ", jsonData)
+                        // console.log("jsondata ==> repos ", jsonData)
                         return Observable.of(GitAction.getRepoSuccessful(jsonData));
                     });
             });
@@ -24,7 +24,7 @@ export class GitEpic {
                 return Observable.ajax(`https://api.github.com/users/${action$.payload}/followers`)
                     .pluck("response")
                     .switchMap((jsonData) => {
-                        console.log("jsondata ==> followers ", jsonData)
+                        // console.log("jsondata ==> followers ", jsonData)
                         return Observable.of(GitAction.getFollowersSuccessful(jsonData));
                     });
             });
