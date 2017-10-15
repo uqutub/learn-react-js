@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button, TextInput } from 'react-native';
 import Nav from '../nav/nav';
 
-import {todoService} from '../../service/index';
+import { todoService } from '../../service/index';
 import { connect } from 'react-redux'
 import { TodoAction } from '../../store/action/todo';
 import { GitAction } from '../../store/action/github';
@@ -17,13 +17,15 @@ class Home extends React.Component {
 
     componentWillMount() {
         this.state = { todoText: '', todos: this.props.todos };
-        todoService.mySubjectObservable.subscribe(x => {
-            console.log('fireeeeeeeeeed my observable', x);
-        });
+        // todoService.mySubjectObservable.subscribe(x => {
+        //     console.log('fireeeeeeeeeed my observable', x);
+        // });
+        this.props.getMyRepo('uqutub');
     }
 
     componentWillReceiveProps(nextProps) {
-        // console.log('nextProps ---------', nextProps['todos'].length);
+        console.log('nextProps ---------', nextProps['loader']);
+        // console.log('nextProps ---------', nextProps['repo']);
         this.setTodos(nextProps['todos']);
     }
 
@@ -34,7 +36,7 @@ class Home extends React.Component {
     addTodo = () => {
         let o = { id: this.props.todos.length, text: this.state.todoText, status: false }
         this.props.onAddClick(o);
-        todoService.fireMyValue(o);
+        // todoService.fireMyValue(o);
     }
 
     deleteTodo(todo) {
@@ -85,7 +87,9 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        todos: state.todoReducer['todo']
+        todos: state.todoReducer['todo'],
+        repo: state.gitReducer['repo'],
+        loader: state.gitReducer['loader'],
     }
 }
 

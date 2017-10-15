@@ -6,6 +6,8 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 // reducers
 import { counterReducer } from './reducer/counter';
 import { todoReducer } from './reducer/todo';
+import { githubReducer } from './reducer/github';
+
 
 // actions
 import { GitEpic } from './epic/github';
@@ -13,7 +15,8 @@ import { GitEpic } from './epic/github';
 // Application Reducers
 const rootReducer = combineReducers({
     counterReducer: counterReducer,
-    todoReducer: todoReducer
+    todoReducer: todoReducer,
+    gitReducer: githubReducer
 });
 
 export const rootEpic = combineEpics(

@@ -8,6 +8,7 @@ export class GitAction {
     static GET_FOLLOWERS_SUCCESS = 'GET_FOLLOWERS_SUCCESS';
 
     static getRepos(uid) {
+        console.log('1')
         return {
             type: GitAction.GET_REPOS,
             payload: uid
